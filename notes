@@ -1,0 +1,49 @@
+HIDE AND SEEK
+
+This game is being created for Maze Day.  At the moment, the working name is Hide and Seek, as a functional description
+of what occurs within in the game.  However, it's important to note that the name Hide and Seek is
+ONLY working.  It is subject to change based on asking for ideas and inspiration from others, and any brainwaves of
+my own.
+
+Game Outline:
+    The goal of the game, using either "Marco" and "Polo" or "Warmer" and "Colder", will lead the child through a
+grid-based world to a goal, within a given time limit.  As time goes on, the maps will get bigger and the time allowed
+will get smaller, and slowly more and more obstacles, of increasing danger will be added.  The child will enjoy the
+varied and intriguing sound design of the game, and additionally become competitive in the name of upping the overall
+score from previous.
+
+Primary ideals for the game:
+- Ensuring that all positional information is successfully indicated aurally.  As the children are blind, they will be
+  relying primarily on audio feedback in order to actually play the game, so that means that aural response must be
+  tight and well-tuned and provide sufficient response in order to maintain the game pacing and keep it fun for them
+- In order to allow for a constant and simple spacial reference point for the students, all movement will be grid-based
+  and thus be regular and simple to keep track of for the children.  This additionally meets the secondary objective
+  of encouraging "computer logic" thought in the children, as regular grid-based things hearkens to concepts such as
+  pixels and indices and other such things.
+- In the name of giving a constant and reliable sound experience, some level of low, ambient noise will be implemented
+  as well, be it as a hum, or low level open source background music
+- Close out with some form of score based on time spend and the difficult multiplier in order to give the child some
+  manner in which to assess their own performance and compare to others.  Perhaps create a scoreboard
+    + Issue with scoreboard would be allowing them to view it and know who did better, as that would require text-to-
+      speech for the numerical values of the scores, which may be difficult to impossible to implement
+
+Implementation:
+- The use of the four arrow keys for movement for the character.  SIMPLY up, down, left, and right, with no necessity
+  to recall such more complicated things like rotation and facing
+    + This holds the additional advantage of thus not needing to create more complicated sound processing and positional
+      awareness on the part of the program.
+- The audio library Howler has been brought up in conversation several times... Look into that
+- Use some form of base "difficulty factor" to mathematically scale time limit, as well as map size, and also decide
+  when to begin including different types of objects, in the name of overall creating a varied and changing and thus
+  more exciting game experience for the child.
+    + Obstacle types will come in two types, lethal and obstructionist.
+    + Lethal obstacles will kill and reset the child back to the start of the level, they will have louder sounds
+      radiating from them in order to indicate the increased danger of this obstacle
+    + Obstructionist obstacles merely stop the child from progressing in that direction, and make the player character
+      create a sound to indicate that they have been stopped (perhaps in addition to some low radiant throbbing which
+      warns away the child)
+
+
+TODO:
+- Create mock-ups for levels, in the name of giving a visual(haha) idea of what the game will look and function like
+-
