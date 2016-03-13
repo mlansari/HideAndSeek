@@ -13,7 +13,7 @@ var states;
 
 
 // Things to move to independent files
-var gameState;          // Base state during game execution, most common state of the game state machine
+//var gameState;          // Base state during game execution, most common state of the game state machine
 
 /**
  * Initializations
@@ -31,19 +31,19 @@ states = {
 
 
 // TODO:  temporary definition of gameState until it can be moved into another file
-gameState = function() {
-
-};
-
-gameState.prototype = {
-    create: function() {
-        console.log("gameState created");
-    },
-
-    update: function() {
-        console.log("gameState updated");
-    }
-}
+//gameState = function() {
+//
+//};
+//
+//gameState.prototype = {
+//    create: function() {
+//        console.log("gameState created");
+//    },
+//
+//    update: function() {
+//        console.log("gameState updated");
+//    }
+//}
 
 
 // Usage of this initialization = (width, height, rendermode (Let phaser choose), HTML5PageLocationOfGameScreen)
