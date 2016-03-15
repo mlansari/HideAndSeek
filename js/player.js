@@ -36,6 +36,7 @@ Player.prototype = {
         // Change the Player's y position
         if (this.y - 1 >= 0) {          // TODO: check that next position is clear as well, prior to allowing movement
             this.y -= 1;
+            this.playerSprite.y -= mapProperties.tHeight;
         } else {
             // If y position is at the map bound, call that Player was blocked by obstacle
             this.obstacleBlock(0);
@@ -45,6 +46,7 @@ Player.prototype = {
     moveDown: function() {
         if (this.y + 1 < this.ywall) {
             this.y += 1;
+            this.playerSprite.y += mapProperties.tHeight;
         } else {
             // Y pos map bound, call for Player blocked by obstacle
             this.obstacleBlock(2);
@@ -54,6 +56,7 @@ Player.prototype = {
     moveLeft: function() {
         if (this.x - 1 >= 0) {
             this.x -= 1;
+            this.playerSprite.x -= mapProperties.tWidth;
         } else {
             // X pos map bound, call for Player blocked by obstacle
             this.obstacleBlock(1);
@@ -63,6 +66,7 @@ Player.prototype = {
     moveRight: function() {
         if (this.x + 1 < this.xwall) {
             this.x += 1;
+            this.playerSprite.x += mapProperties.tWidth;
         } else {
             // X pos map bound, call for Player blocked by obstacle
             this.obstacleBlock(3);

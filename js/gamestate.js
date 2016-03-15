@@ -112,19 +112,23 @@ gameState.prototype = {
      * Set of functions defining what to do when various keys are pressed on the keyboard
      */
     upPressed: function() {
-
+        // Move the player up
+        this.player.moveUp();
     },
 
     downPressed: function() {
-
+        // Move the player down
+        this.player.moveDown();
     },
 
     leftPressed: function() {
-
+        // Move the player left
+        this.player.moveLeft();
     },
 
     rightPressed: function() {
-
+        // Move the player right
+        this.player.moveRight();
     },
 
 
