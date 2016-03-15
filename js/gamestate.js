@@ -19,10 +19,11 @@ gameState = function(game) {
     this.playerSprite;
 
     // Create containers for control codes here
-    this.keyLeft;
-    this.keyRight;
     this.keyUp;
     this.keyDown;
+    this.keyLeft;
+    this.keyRight;
+
 
 }
 
@@ -43,8 +44,19 @@ gameState.prototype = {
         // All of the initialization of various aspects of the state, like controls, physic, and resetting and
         // object generation
 
-        // Temporary debug output
+        // Temporary debug output TODO: remove/comment when no longer necessary
         console.log("Game State created");
+
+        // Do all of the game information initialization
+        this.initKeyboard();
+    },
+
+    // This is a function used to initialize the keyboard
+    initKeyboard: function() {
+        this.keyUp = game.input.keyboard.addKey(Phaser.Keyboard.UP);
+        this.keyDown = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
+        this.keyLeft = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+        this.keyRight = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
     },
 
     update: function() {
@@ -52,7 +64,53 @@ gameState.prototype = {
 
         // Temporary debug output
         console.log(" Game State updated ");
+
+        // Check for keys which are pressed down
+        if (this.keyUp.isDown) {
+            console.log("Up is pressed");           // Temporary debug output TODO: remove
+
+            // Input response function call
+            this.upPressed();
+        }
+        if (this.keyDown.isDown) {
+            console.log("Down is pressed");         // Temporary debug output TODO: remove
+
+            // Input response function call
+            this.downPressed();
+        }
+        if (this.keyLeft.isDown) {
+            console.log("Left is pressed");         // Temporary debug output TODO: remove
+
+            // Input response function call
+            this.leftPressed();
+        }
+        if (this.keyRight.isDown) {
+            console.log("Right is pressed");        // Temporary debug output TODO: remove
+
+            // Input response function call
+            this.rightPressed();
+        }
     },
+
+    /*
+     * Set of functions defining what to do when various keys are pressed on the keyboard
+     */
+    upPressed: function() {
+
+    },
+
+    downPressed: function() {
+
+    },
+
+    leftPressed: function() {
+
+    },
+
+    rightPressed: function() {
+
+    },
+
 
     shutdown: function() {
         // This is what happened when the state ends.  It can be doing closing and saving operations, or difficulty

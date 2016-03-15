@@ -5,14 +5,14 @@
  * locations of things such as obstacles
  */
 
-// Declarations
+// *** Declarations ***
 // Holder of the properties of the map
 var mapProperties;
 // Definition of the actual map
 var gameMap;
 
 
-// Initializations
+// *** Initializations ***
 
 // Set up the map properties
 mapProperties = {
@@ -24,16 +24,14 @@ mapProperties = {
     MIN_OBSTACLE_DIFF: 6,
 
     // Sprite location and name definitions
-    tileSpriteMap: {URL:'assets/'},
+    tileSpriteMap: {URL:'assets/TempFloor.png', name:"floor"},      // TODO: change to final art when that exists (means changing to tile map)
 };
 
 // Set up the gameMap definitions
-gameMap  = function(tileSpriteMapName) {
-    // The location from which to load the tileSpriteMap
-    //this.tileSpriteMap: = {URL:'assets/' + tileSpriteMapName, name: 'tileSpriteMap'};
-
+gameMap  = function() {
     // The various groups for objects on the map
-    this.fatalObstacles;
+    this.lethalObstacles;
+    this.nonLethalObstacles;
 };
 
 // Prototype the aspects of the gameMap
@@ -53,6 +51,9 @@ gameMap.prototype = {
 
 
     }
+
+
+
 }
 
 

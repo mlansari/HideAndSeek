@@ -47,3 +47,13 @@ Implementation:
 TODO:
 - Create mock-ups for levels, in the name of giving a visual(haha) idea of what the game will look and function like
 -
+
+
+
+
+Other things:
+
+- There are two separate coordinate systems.  One is the render coordinate system and is the x and y values of every
+  aspect of the project relative to the pixels of the screen.  The other one is the storage/update coordinate system,
+  which treats everything with the dimensions of one tile as one single discrete coordinate unit, thus allowing the
+  direct translation between the two systems by the simple multiplication or division by the dimensions of the tile.
