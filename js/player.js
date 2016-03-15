@@ -15,23 +15,17 @@ Player = function(startx, starty, xmapdim, ymapdim) {
     this.y = starty;
 
     // The x and y values at which the Player can no longer move to
-    this.xwall;
-    this.ywall;
+    this.xwall = xmapdim;
+    this.ywall = ymapdim;
 
     // The Player sprite
-    this.playerSprite;
-
+    this.playerSprite = game.add.sprite(this.x * mapProperties.tWidth, this.y * mapProperties.tHeight,
+        spriteFiles.player.name);
 
 };
 
 // Functional declarations of the Player
 Player.prototype = {
-
-    // Function called for Player creation
-    createPlayer: function(xmapdim, ymapdim) {
-        this.xwall = xmapdim;
-        this.ywall = ymapdim;
-    },
 
     /*
      * Movement functions (up, down, left, right)
@@ -82,4 +76,8 @@ Player.prototype = {
     },
 
 
+    // A generic update function, used to perform any necessary per-cycle scheduling
+    update: function() {
+
+    },
 };

@@ -15,8 +15,9 @@ var gameState;
 gameState = function(game) {
     // In here put all of the basic aspects of the gameState, things which need to be accessed locally and not globally
 
-    // Create the containers for basic Player aspects here
+    // Create the containers for basic game level aspects here
     this.player;
+    this.myMap;
 
     // Create containers for control codes here
     this.keyUp;
@@ -33,13 +34,13 @@ gameState.prototype = {
     init: function() {
         // This is all of the initial operations as soon as the state begins
         // Create things which need to be used throughout the state here...
+        // This is called BEFORE preload
 
-        // Create a new player for the level
-        this.player = new Player();          // TODO: pass parameters
     },
 
     preload: function() {
         // Load all of the assets and contents necessary for the game here
+        loadSprites();      // Load all of the sprites saved in the fileinfo.js file
     },
 
     create: function() {
@@ -52,6 +53,7 @@ gameState.prototype = {
 
         // Do all of the game information initialization
         this.initKeyboard();
+        this.initLevel();           // TODO: change when this is called to make it work per level iteration
     },
 
     // This is a function used to initialize the keyboard
@@ -60,6 +62,17 @@ gameState.prototype = {
         this.keyDown = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
         this.keyLeft = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
         this.keyRight = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+    },
+
+    initLevel: function() {
+        // Create a map object for the game
+        this.myMap = new gameMap();
+
+        // Generate the gameMap
+        this.myMap.generate(0);         // TODO: move this to where it can execute per level
+
+        // Create a new player for the level    TODO:  move to where this is done per level (maybe?)
+        this.player = new Player(0, 0, mapProperties.baseWidth, mapProperties.baseHeight);          // TODO: pass parameters that aren't placeholder
     },
 
     update: function() {

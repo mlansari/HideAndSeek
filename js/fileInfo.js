@@ -8,12 +8,14 @@
 // *** Declarations ***
 var spriteFiles;
 var audioFiles;
-
+var loadSprites;        // Function used to load all of the sprites in the objects used to store their properties
+var loadAudio;          // Function used to load all of the audio files in the objects used to store their properties
 
 // **** Initializations ***
 spriteFiles = {
     // Temporary sprites
     floor: {URL:'assets/TempFloor.png', name:'floor'},
+    player: {URL:'assets/TempPlayer.png', name:'player'},
 
 
     // Permanent Sprites
@@ -26,5 +28,22 @@ audioFiles = {
 
 
     // Permanent audio
+
+};
+
+loadSprites = function() {
+    // Temporary sprite loads
+    game.load.image(spriteFiles.floor.name, spriteFiles.floor.URL);
+    game.load.image(spriteFiles.player.name, spriteFiles.player.URL);
+
+    // Permanent sprite loads
+
+};
+
+loadAudio = function() {
+    // Temporary audio loads
+
+
+    // Permanent audio loads
 
 };
