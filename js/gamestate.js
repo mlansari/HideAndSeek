@@ -15,8 +15,8 @@ var gameState;
 gameState = function(game) {
     // In here put all of the basic aspects of the gameState, things which need to be accessed locally and not globally
 
-    // Create the containers for basic player aspects here
-    this.playerSprite;
+    // Create the containers for basic Player aspects here
+    this.player;
 
     // Create containers for control codes here
     this.keyUp;
@@ -33,6 +33,9 @@ gameState.prototype = {
     init: function() {
         // This is all of the initial operations as soon as the state begins
         // Create things which need to be used throughout the state here...
+
+        // Create a new player for the level
+        this.player = new Player();          // TODO: pass parameters
     },
 
     preload: function() {

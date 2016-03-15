@@ -20,15 +20,20 @@ mapProperties = {
     tWidth: 32,
     tHeight: 32,
 
+    // Base 0 level difficulty width and height of map  TODO: refine these values
+    baseWidth: 24,
+    baseHeight: 18,
+
     // Important map property constants
     MIN_OBSTACLE_DIFF: 6,
 
-    // Sprite location and name definitions
-    tileSpriteMap: {URL:'assets/TempFloor.png', name:"floor"},      // TODO: change to final art when that exists (means changing to tile map)
 };
 
 // Set up the gameMap definitions
 gameMap  = function() {
+    // The array of grid cells for the map
+    this.mapGrid;
+
     // The various groups for objects on the map
     this.lethalObstacles;
     this.nonLethalObstacles;
@@ -49,6 +54,12 @@ gameMap.prototype = {
             genObstacles = true;
         }
 
+        // This is where we calculate the width and height of the map based on the difficulty level and base values
+
+    },
+
+    // This function generates and returns a row of specified width, including whether or not it has obstacles
+    genRow: function(hasObs, width, diffLevel) {
 
     }
 
