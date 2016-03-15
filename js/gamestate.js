@@ -14,6 +14,16 @@ var gameState;
  */
 gameState = function(game) {
     // In here put all of the basic aspects of the gameState, things which need to be accessed locally and not globally
+
+    // Create the containers for basic player aspects here
+    this.playerSprite;
+
+    // Create containers for control codes here
+    this.keyLeft;
+    this.keyRight;
+    this.keyUp;
+    this.keyDown;
+
 }
 
 gameState.prototype = {
