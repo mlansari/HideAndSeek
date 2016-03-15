@@ -42,6 +42,12 @@ gameState.prototype = {
 
         // Temporary debug output
         console.log(" Game State updated ");
+    },
+
+    shutdown: function() {
+        // This is what happened when the state ends.  It can be doing closing and saving operations, or difficulty
+        // increase, or anything like that
+
     }
 
 }
