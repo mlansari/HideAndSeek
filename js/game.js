@@ -12,16 +12,17 @@ var gameProperties;     // The various primary important unchanging properties o
 var states;
 
 
-// TODO: Things to move to independent files
-
-
 /**
  * Initializations
  */
 // Initialize the various properties of the game, things which should be loaded from something like json
 gameProperties = {
+    // Screen size properties       TODO: use to scale the size of individual map rendering (Not super important)
     screenWidth: 1280,
     screenHeight: 720,
+
+    // Timing constants (in milliseconds)
+    MIN_MOVE_TIME: 500,         // Currently half a second
 };
 
 // Define the various states available to the game

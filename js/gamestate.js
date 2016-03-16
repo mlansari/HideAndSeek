@@ -25,7 +25,8 @@ gameState = function(game) {
     this.keyLeft;
     this.keyRight;
 
-
+    // Holds amount of time since last movement
+    this.nextMovement = 0;
 }
 
 gameState.prototype = {
@@ -83,26 +84,18 @@ gameState.prototype = {
 
         // Check for keys which are pressed down
         if (this.keyUp.isDown) {
-            console.log("Up is pressed");           // Temporary debug output TODO: remove
-
             // Input response function call
             this.upPressed();
         }
         if (this.keyDown.isDown) {
-            console.log("Down is pressed");         // Temporary debug output TODO: remove
-
             // Input response function call
             this.downPressed();
         }
         if (this.keyLeft.isDown) {
-            console.log("Left is pressed");         // Temporary debug output TODO: remove
-
             // Input response function call
             this.leftPressed();
         }
         if (this.keyRight.isDown) {
-            console.log("Right is pressed");        // Temporary debug output TODO: remove
-
             // Input response function call
             this.rightPressed();
         }
@@ -112,23 +105,55 @@ gameState.prototype = {
      * Set of functions defining what to do when various keys are pressed on the keyboard
      */
     upPressed: function() {
-        // Move the player up
-        this.player.moveUp();
+        // Debug line to indicate button pressed
+        console.log("Up pressed");
+
+        // Check if there has been enough time since previous movement
+        if (game.time.now > this.nextMovement) {
+            // Move the player up
+            this.player.moveUp();
+            // Reset the movement timer
+            this.nextMovement = game.time.now + gameProperties.MIN_MOVE_TIME;
+        }
     },
 
     downPressed: function() {
-        // Move the player down
-        this.player.moveDown();
+        // Debug line to indicate button pressed
+        console.log("Down pressed");
+
+        // Check if there has been enough time since previous movement
+        if (game.time.now > this.nextMovement) {
+            // Move the player down
+            this.player.moveDown();
+            // Reset the movement timer
+            this.nextMovement = game.time.now + gameProperties.MIN_MOVE_TIME;
+        }
     },
 
     leftPressed: function() {
-        // Move the player left
-        this.player.moveLeft();
+        // Debug line to indicate button pressed
+        console.log("Left pressed");
+
+        // Check if there has been enough time since previous movement
+        if (game.time.now > this.nextMovement) {
+            // Move the player left
+            this.player.moveLeft();
+            // Reset the movement timer
+            this.nextMovement = game.time.now + gameProperties.MIN_MOVE_TIME;
+        }
     },
 
     rightPressed: function() {
-        // Move the player right
-        this.player.moveRight();
+        // Debug line to indicate button pressed
+        console.log("Right pressed");
+
+        // Check if there has been enough time since previous movement
+        if (game.time.now > this.nextMovement) {
+            // Move the player right
+            this.player.moveRight();
+            // Reset the movement timer
+            this.nextMovement = game.time.now + gameProperties.MIN_MOVE_TIME;
+        }
     },
 
 
