@@ -105,7 +105,7 @@ gameState.prototype = {
      * Set of functions defining what to do when various keys are pressed on the keyboard
      */
     upPressed: function() {
-        // Debug line to indicate button pressed
+        // Debug line to indicate button pressed, uncomment when needed
         console.log("Up pressed");
 
         // Check if there has been enough time since previous movement
@@ -118,7 +118,7 @@ gameState.prototype = {
     },
 
     downPressed: function() {
-        // Debug line to indicate button pressed
+        // Debug line to indicate button pressed, uncomment when needed
         console.log("Down pressed");
 
         // Check if there has been enough time since previous movement
@@ -131,7 +131,7 @@ gameState.prototype = {
     },
 
     leftPressed: function() {
-        // Debug line to indicate button pressed
+        // Debug line to indicate button pressed, uncomment when needed
         console.log("Left pressed");
 
         // Check if there has been enough time since previous movement
@@ -144,7 +144,7 @@ gameState.prototype = {
     },
 
     rightPressed: function() {
-        // Debug line to indicate button pressed
+        // Debug line to indicate button pressed, uncomment when needed
         console.log("Right pressed");
 
         // Check if there has been enough time since previous movement

@@ -22,7 +22,7 @@ gameProperties = {
     screenHeight: 720,
 
     // Timing constants (in milliseconds)
-    MIN_MOVE_TIME: 500,         // Currently half a second
+    MIN_MOVE_TIME: 300,         // Currently half a second
 };
 
 // Define the various states available to the game
