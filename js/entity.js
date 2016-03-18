@@ -11,10 +11,12 @@ var entity;
 
 // *** Initializations ***
 entity = function() {
-    // The position of the entity
-    this.x;
-    this.y;
+    // The position of the entity (set to -1 by default to indicate unset position)
+    this.x = -1;
+    this.y = -1;
 
+    // The name of the sound
+    this.sound = "";
 };
 
 entity.prototype = {
@@ -26,6 +28,12 @@ entity.prototype = {
     },
 
     // The setter and getter for the name of the ambient sound that it has
+    setSound: function(soundName) {
+        this.sound = soundName;
+    },
 
+    getSound: function() {
+        return this.sound;
+    },
 
 };

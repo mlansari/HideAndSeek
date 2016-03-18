@@ -44,6 +44,7 @@ gameMap  = function() {
     // The various groups for objects on the map
     this.lethalObstacles;
     this.nonLethalObstacles;
+    this.goal;
 
     // The current dimensions for this map based on the difficulty level
     this.width;
@@ -84,6 +85,8 @@ gameMap.prototype = {
 
         // Build a tilemap from the mapGrid      TODO: switch to permanent render scheme
         this.tempRenderSet();
+
+        // Semi-randomly generate the position of the goal on the map
 
 
     },
