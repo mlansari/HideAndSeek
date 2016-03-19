@@ -115,8 +115,8 @@ gameMap.prototype = {
             }
         }
 
-        // Bring the goal to the top for rendering
-        game.world.bringToTop(this.goal.spriteName);
+        // Add the goal sprite to rendering
+        this.goal.initSprite();
     },
 
     // This is a utility function used to check for entities on a tile

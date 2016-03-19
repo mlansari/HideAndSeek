@@ -11,20 +11,12 @@ var goalObj;
 // *** Initializations ***
 // Initialize the goal Object
 goalObj = function() {
-//    goalObj.prototype = new entity();
-//
-//    goalObj.spriteName = "goal";
-//    goalObj.spriteRef = game.add.sprite(goalObj.x * mapProperties.tWidth, goalObj.y * mapProperties.tHeight,
-//        goalObj.spriteName);
+    this.spriteName = "goal";
     this.initSprite();
 };
 
 // Set the parent (prototype) of the goal, the goal is an entity
 goalObj.prototype = new entity();
-// Set the default properties of the goal object
-goalObj.spriteName = "goal";
-//goalObj.spriteRef = game.add.sprite(goalObj.x * mapProperties.tWidth, goalObj.y * mapProperties.tHeight,
-//    goalObj.spriteName);
 
 // Override the collision with player functionality
 goalObj.prototype.onCollision = function() {
