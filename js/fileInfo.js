@@ -16,7 +16,7 @@ spriteFiles = {
     // Temporary sprites
     floor: {URL:'assets/TempFloor.png', name:'floor'},
     player: {URL:'assets/TempPlayer.png', name:'player'},
-    goal: {URL:'assets/TempGoal', name:'goal'},
+    goal: {URL:'assets/TempGoal.png', name:'goal'},
 
     // Permanent Sprites
 

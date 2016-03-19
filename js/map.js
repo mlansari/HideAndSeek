@@ -10,12 +10,8 @@
 var mapProperties;
 // Definition of the actual map
 var gameMap;
-// Types of tiles the map can have
-var tileTypes;
-
 
 // *** Initializations ***
-
 // Set up the map properties
 mapProperties = {
     // Tile dimensions TODO: Load from file
@@ -30,11 +26,6 @@ mapProperties = {
     MIN_OBSTACLE_DIFF: 6,
 
 };
-
-tileTypes = {
-    empty: {index:0, sprite:'floor'},
-};
-
 
 // Set up the gameMap definitions
 gameMap  = function() {
@@ -73,8 +64,8 @@ gameMap.prototype = {
         // This is all of the operations that only need to be done if the map is being generated with obstacles
         if (genObstacles) {
             // Create the groups which are going to contain the obstacles on the map, of both types
-            this.lethalObstacles = game.add.group();
-            this.nonLethalObstacles = game.add.group();
+            this.lethalObstacles = [];
+            this.nonLethalObstacles = [];
         }
 
         // Create the mapGrid
@@ -84,15 +75,19 @@ gameMap.prototype = {
         }
 
         // Build a tilemap from the mapGrid      TODO: switch to permanent render scheme
-        this.tempRenderSet();
+        //this.tempRenderSet();
 
         // Semi-randomly generate the position of the goal on the map
         // Create the goal object
         this.goal = new goalObj();
         // Choose a row in the top three to generate in
         var row = game.rnd.between(0, 2);
+        this.goal.setPosition(0, row);
 
 
+
+        // Set up for render
+        this.tempRenderSet();
     },
 
     // This function generates and returns a row of specified width, including whether or not it has obstacles
@@ -100,7 +95,7 @@ gameMap.prototype = {
         // What to generate if the row is not going to have obstacles
         if (!hasObs) {
             var row = new Array(width);
-            row.fill(tileTypes.empty.index);
+            row.fill(entityTypes.empty.index);
             return row;
         } else {
             // TODO: implement generation of row with random obstacles included
@@ -119,7 +114,15 @@ gameMap.prototype = {
                 this.renderMap[i][j] = game.add.sprite(j * mapProperties.tWidth, i * mapProperties.tHeight, spriteFiles.floor.name);
             }
         }
-    }
+
+        // Bring the goal to the top for rendering
+        game.world.bringToTop(this.goal.spriteName);
+    },
+
+    // This is a utility function used to check for entities on a tile
+    checkCollision: function(x, y) {
+
+    },
 
 }
 

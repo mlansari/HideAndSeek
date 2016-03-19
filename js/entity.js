@@ -7,9 +7,19 @@
 
 // *** Declarations ***
 var entity;
+var entityTypes;
 
 
 // *** Initializations ***
+// This defines each type of entity's necessary outside metadata, index, etc.
+entityTypes = {
+    empty: {index:0, },
+    nonLethalObstacle: {index:1, },
+    lethalObstacles: {index:2, },
+    goal: {index:3, },
+};
+
+
 entity = function() {
     // The position of the entity (set to -1 by default to indicate unset position)
     this.x = -1;
@@ -22,7 +32,6 @@ entity = function() {
     // This contains the actual reference to the Phaser sprite which is created by entity children
     this.spriteRef;
 
-    // This property indicates whether or not the obj
 };
 
 entity.prototype = {

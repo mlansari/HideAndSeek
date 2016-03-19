@@ -18,6 +18,7 @@ gameState = function(game) {
     // Create the containers for basic game level aspects here
     this.player;
     this.myMap;
+    this.currentLevel;
 
     // Create containers for control codes here
     this.keyUp;
@@ -27,6 +28,9 @@ gameState = function(game) {
 
     // Holds amount of time since last movement
     this.nextMovement = 0;
+
+    // Holds the current difficulty level, which starts at zero and is incremented upwards
+    this.difficulty = 0;
 }
 
 gameState.prototype = {
@@ -66,14 +70,9 @@ gameState.prototype = {
     },
 
     initLevel: function() {
-        // Create a map object for the game
-        this.myMap = new gameMap();
-
-        // Generate the gameMap
-        this.myMap.generate(0);         // TODO: move this to where it can execute per level
-
-        // Create a new player for the level    TODO:  move to where this is done per level (maybe?)
-        this.player = new Player(0, 0, mapProperties.baseWidth, mapProperties.baseHeight);          // TODO: pass parameters that aren't placeholder
+        // Generate a new level whenever a new level is needed
+        this.currentLevel = new newLevel();
+        this.currentLevel.create(this.difficulty);
     },
 
     update: function() {
@@ -111,7 +110,7 @@ gameState.prototype = {
         // Check if there has been enough time since previous movement
         if (game.time.now > this.nextMovement) {
             // Move the player up
-            this.player.moveUp();
+            this.currentLevel.levelPlayer.moveUp();
             // Reset the movement timer
             this.nextMovement = game.time.now + gameProperties.MIN_MOVE_TIME;
         }
@@ -124,7 +123,7 @@ gameState.prototype = {
         // Check if there has been enough time since previous movement
         if (game.time.now > this.nextMovement) {
             // Move the player down
-            this.player.moveDown();
+            this.currentLevel.levelPlayer.moveDown();
             // Reset the movement timer
             this.nextMovement = game.time.now + gameProperties.MIN_MOVE_TIME;
         }
@@ -137,7 +136,7 @@ gameState.prototype = {
         // Check if there has been enough time since previous movement
         if (game.time.now > this.nextMovement) {
             // Move the player left
-            this.player.moveLeft();
+            this.currentLevel.levelPlayer.moveLeft();
             // Reset the movement timer
             this.nextMovement = game.time.now + gameProperties.MIN_MOVE_TIME;
         }
@@ -150,7 +149,7 @@ gameState.prototype = {
         // Check if there has been enough time since previous movement
         if (game.time.now > this.nextMovement) {
             // Move the player right
-            this.player.moveRight();
+            this.currentLevel.levelPlayer.moveRight();
             // Reset the movement timer
             this.nextMovement = game.time.now + gameProperties.MIN_MOVE_TIME;
         }
