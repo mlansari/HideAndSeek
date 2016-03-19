@@ -28,6 +28,7 @@ gameProperties = {
 // Define the various states available to the game
 states = {
     game: 'game',
+    menu: 'menu',
 };
 
 

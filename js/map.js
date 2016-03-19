@@ -87,6 +87,10 @@ gameMap.prototype = {
         this.tempRenderSet();
 
         // Semi-randomly generate the position of the goal on the map
+        // Create the goal object
+        this.goal = new goalObj();
+        // Choose a row in the top three to generate in
+        var row = game.rnd.between(0, 2);
 
 
     },
