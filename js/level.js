@@ -48,7 +48,8 @@ newLevel.prototype = {
         // Create a player for the game
         // Randomly choose from the bottom three rows to generate in
         var row = game.rnd.between(this.levelMap.height - 3, this.levelMap.height - 1);
-        this.levelPlayer = new Player(0, row, this.levelMap.width, this.levelMap.height);
+        var column = game.rnd.between(0, this.levelMap.width - 1);
+        this.levelPlayer = new Player(column, row, this.levelMap.width, this.levelMap.height);
     },
 
     // This is what is called each gameLoop iteration,in order to update the game

@@ -2,22 +2,15 @@
  * Created by mlans13 on 3/13/2016.
  */
 
-/**
- *  Declare aspects of the gameState necessary for global access here
- */
-
+// *** Declarations ***
 var gameState;
 
 
-/**
- * Initialize everything for the gameState here
- */
+// *** Initializations ***
 gameState = function(game) {
     // In here put all of the basic aspects of the gameState, things which need to be accessed locally and not globally
 
     // Create the containers for basic game level aspects here
-    this.player;
-    this.myMap;
     this.currentLevel;
 
     // Create containers for control codes here
@@ -31,7 +24,7 @@ gameState = function(game) {
 
     // Holds the current difficulty level, which starts at zero and is incremented upwards
     this.difficulty = 0;
-}
+};
 
 gameState.prototype = {
     // Place all of the functions necessary for a Phaser state here
@@ -81,6 +74,15 @@ gameState.prototype = {
         // Temporary debug output
         console.log(" Game State updated ");
 
+        // Check for level states
+        if (this.currentLevel.levelComplete == 1) {
+            // TODO: add a pause timer between levels through scheduling event with Phaser event system
+
+            // Start the next level
+            this.nextLevel();
+        }
+
+
         // Check for keys which are pressed down
         if (this.keyUp.isDown) {
             // Input response function call
@@ -98,6 +100,12 @@ gameState.prototype = {
             // Input response function call
             this.rightPressed();
         }
+    },
+
+    nextLevel: function() {
+        // This is a utility used to cover up and handle the regeneration of the level with an incremented difficulty
+        this.difficulty++;
+        this.currentLevel.create(this.difficulty);
     },
 
     /*
@@ -162,4 +170,4 @@ gameState.prototype = {
 
     }
 
-}
+};

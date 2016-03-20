@@ -4,17 +4,13 @@
  * The purpose of this file is to create the main handle from which the game is accessed on the index page for the game.
  */
 
-/**
- * Declarations
- */
+// *** Declarations ***
 var game;               // The main game object
 var gameProperties;     // The various primary important unchanging properties of the game TODO: load from file
 var states;
 
 
-/**
- * Initializations
- */
+// *** Initializations ***
 // Initialize the various properties of the game, things which should be loaded from something like json
 gameProperties = {
     // Screen size properties       TODO: use to scale the size of individual map rendering (Not super important)

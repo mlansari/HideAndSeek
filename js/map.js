@@ -82,7 +82,9 @@ gameMap.prototype = {
         this.goal = new goalObj();
         // Choose a row in the top three to generate in
         var row = game.rnd.between(0, 2);
-        this.goal.setPosition(0, row);
+        // Choose a column position here
+        var column = game.rnd.between(0, this.width - 1);
+        this.goal.setPosition(column, row);
 
 
 
@@ -124,7 +126,7 @@ gameMap.prototype = {
 
     },
 
-}
+};
 
 
 
