@@ -9,7 +9,9 @@
 var spriteFiles;
 var audioFiles;
 var loadSprites;        // Function used to load all of the sprites in the objects used to store their properties
-var loadAudio;          // Function used to load all of the audio files in the objects used to store their properties
+var loadAudio;          // Function loads all of the sound files in the audioFiles object into the soundHandler
+
+var soundHandler;       // This object handles all of the sound usage needed in the game
 
 // **** Initializations ***
 spriteFiles = {
@@ -24,8 +26,9 @@ spriteFiles = {
 
 audioFiles = {
     // Temporary audio
-
-
+    goalAcquired: {urls:['assets/snd/TempGoalGot.wav'], name:'goalAcquired', layer: 1},
+    warmer: {urls:['assets/snd/TempWinSound.wav'], name:'warmer', layer: 1},
+    colder: {urls:['assets/snd/TempLoseSound.wav'], name:'colder',  layer: 1},
 
     // Permanent audio
 
@@ -42,9 +45,19 @@ loadSprites = function() {
 };
 
 loadAudio = function() {
-    // Temporary audio loads
+    // Iterate through all of the audio in the audioFiles object
+    for (var soundProp in audioFiles) {
+        if (audioFiles.hasOwnProperty(soundProp)) {
+            console.log("Loading: " + soundProp.name);
+            //soundHandler.addSound(soundProp);
+        }
+    }
 
-
-    // Permanent audio loads
-
+    soundHandler.addSound(audioFiles.goalAcquired);
+    soundHandler.addSound(audioFiles.warmer);
+    soundHandler.addSound(audioFiles.colder);
 };
+
+// Sound handler
+soundHandler = new SoundHandler();
+

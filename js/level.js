@@ -28,6 +28,11 @@ newLevel = function() {
 
     // The level's end time
     this.levelEndTime = -1;
+
+    // Information about distance between player and the goal
+    // The last distance between the player and the goal
+    this.lastDistToGoal;
+
 };
 
 newLevel.prototype = {
@@ -50,6 +55,10 @@ newLevel.prototype = {
         var row = game.rnd.between(this.levelMap.height - 3, this.levelMap.height - 1);
         var column = game.rnd.between(0, this.levelMap.width - 1);
         this.levelPlayer = new Player(column, row, this.levelMap.width, this.levelMap.height);
+
+        // Save the initial distance between the player and the goal
+        this.lastDistToGoal = calcDistance(this.levelMap.goal.x, this.levelMap.goal.y, this.levelPlayer.x,
+                                            this.levelPlayer.y);
     },
 
     // This is what is called each gameLoop iteration,in order to update the game
@@ -60,6 +69,37 @@ newLevel.prototype = {
         }
 
         // Check collisions with the player
+        var distToGoal = calcDistance(this.levelMap.goal.x, this.levelMap.goal.y, this.levelPlayer.x, this.levelPlayer.y);
+
+        // Debug print
+        console.log("Distance to Goal: " + distToGoal);
+
+        // If the distance between the player and goal is zero, the goal has been collected
+        if (distToGoal == 0) {
+            // Play the goal acquired sound
+            soundHandler.playSound(soundHandler.soundInfo[audioFiles.goalAcquired.name]);
+
+            // End the level with the success code
+            this.levelEnd(1);
+        }
+
+
+        // If the game level hasn't ended, check the new distance between the player and the goal
+        if (distToGoal < this.lastDistToGoal) {
+            // Play the "warmer" sound byte
+            //sounds[soundInfo["warmer"]].play();
+            soundHandler.playSound(soundHandler.soundInfo[audioFiles.warmer.name]);
+        } else if (distToGoal > this.lastDistToGoal) {
+            // Play the "colder" sound byte
+            //sounds[soundInfo["colder"]].play();
+            soundHandler.playSound(soundHandler.soundInfo[audioFiles.colder.name]);
+        }
+
+
+
+        // Finishing up things
+        // Save the new distance to the goal
+        this.lastDistToGoal = distToGoal;
 
     },
 

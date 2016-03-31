@@ -39,6 +39,7 @@ gameState.prototype = {
     preload: function() {
         // Load all of the assets and contents necessary for the game here
         loadSprites();      // Load all of the sprites saved in the fileinfo.js file
+        loadAudio();        // Set up the sound system of the game, no longer does this load sounds
     },
 
     create: function() {
@@ -72,7 +73,10 @@ gameState.prototype = {
         // This does all of the game loop operations.  Bulk of game logic is handled here, movement, etc.
 
         // Temporary debug output
-        console.log(" Game State updated ");
+        //console.log(" Game State updated ");
+
+        // Update the level
+        this.currentLevel.update();
 
         // Check for level states
         if (this.currentLevel.levelComplete == 1) {
