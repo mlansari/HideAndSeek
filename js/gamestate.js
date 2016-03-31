@@ -109,7 +109,7 @@ gameState.prototype = {
     nextLevel: function() {
         // This is a utility used to cover up and handle the regeneration of the level with an incremented difficulty
         this.difficulty++;
-        this.currentLevel.create(this.difficulty);
+        this.initLevel();
     },
 
     /*
