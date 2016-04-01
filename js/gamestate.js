@@ -80,10 +80,15 @@ gameState.prototype = {
 
         // Check for level states
         if (this.currentLevel.levelComplete == 1) {
-            // TODO: add a pause timer between levels through scheduling event with Phaser event system
-
             // Start the next level
+            //game.time.events.add(gameProperties.PAUSE_BEFORE_NEW_LEVEL, this.nextLevel, this);
             this.nextLevel();
+
+            // TODO: Do something to stop the game from continuing to play and reschedule this event
+
+        } else if (this.currentLevel.levelComplete == 2) {
+            // This is what to do if the game has been lost
+
         }
 
 
@@ -108,6 +113,8 @@ gameState.prototype = {
 
     nextLevel: function() {
         // This is a utility used to cover up and handle the regeneration of the level with an incremented difficulty
+        // TODO: Also play a sound to indicate a new level
+
         this.difficulty++;
         this.initLevel();
     },

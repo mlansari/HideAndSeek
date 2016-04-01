@@ -72,7 +72,7 @@ newLevel.prototype = {
         var distToGoal = calcDistance(this.levelMap.goal.x, this.levelMap.goal.y, this.levelPlayer.x, this.levelPlayer.y);
 
         // Debug print
-        console.log("Distance to Goal: " + distToGoal);
+        //console.log("Distance to Goal: " + distToGoal);
 
         // If the distance between the player and goal is zero, the goal has been collected
         if (distToGoal == 0) {

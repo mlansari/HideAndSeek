@@ -18,7 +18,10 @@ gameProperties = {
     screenHeight: 720,
 
     // Timing constants (in milliseconds)
-    MIN_MOVE_TIME: 300,         // Currently half a second
+    MIN_MOVE_TIME: 300,             // Currently three hundred milliseconds
+    PAUSE_BEFORE_NEW_LEVEL: 1500,   // 1.5 Seconds
+
+
 };
 
 // Define the various states available to the game

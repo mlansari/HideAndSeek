@@ -41,8 +41,14 @@ SoundHandler.prototype = {
 
         // 1 maps to foreground, 2 maps to background
         if (soundProperties.layer == 1) {
-            this.sounds[i].onplay = this.fgdActivate;
-            this.sounds[i].onend = this.fgdDeactivate;
+            this.sounds[i].on('play', function() {
+                this.foreground = true;
+                console.log("fgd active");
+            });
+            this.sounds[i].on('end', function() {
+                this.foreground = false;
+                console.log("fgd inactive");
+            });
             this.fgdSounds.push(i);
         } else if (soundProperties.layer == 2) {
             this.sounds[i].onplay = this.bkgActivate;
@@ -55,6 +61,7 @@ SoundHandler.prototype = {
         console.log(id + " is being played.");
 
         if (this.fgdSounds.indexOf(id) > -1) {
+            console.log("Foreground playing: " + this.foreground);
             if (this.foreground == false) {
                 this.sounds[id].play();
             }
