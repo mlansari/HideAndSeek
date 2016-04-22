@@ -12,7 +12,7 @@ var levelConstants;
 
 // *** Initializations ***
 levelConstants = {
-    BASE_LEVEL_LIFE: 60 * 1000,
+    BASE_LEVEL_LIFE: 120 * 1000,     // SECONDS * MILLISECOND multiplier
 };
 
 newLevel = function() {
@@ -63,9 +63,26 @@ newLevel.prototype = {
 
     // This is what is called each gameLoop iteration,in order to update the game
     update: function() {
+        // Check whether or not level is already over and we're already waiting for cleanup
+        if (this.levelComplete > 0) {
+            // Debug print
+            console.log("This level is over");
+
+            // If it is, exit the loop
+            return;
+        }
+
+        // TODO: debug print the amount of time remaining
+        console.log(this.levelEndTime - game.time.now);
+
         // Check whether or not the time has run out
         if (game.time.now > this.levelEndTime) {
+
+            // Debug print
+            console.log("You ran out of time!");
+
             this.levelEnd(0);
+            return;
         }
 
         // Check collisions with the player
@@ -81,18 +98,22 @@ newLevel.prototype = {
 
             // End the level with the success code
             this.levelEnd(1);
+            return;
         }
 
 
         // If the game level hasn't ended, check the new distance between the player and the goal
         if (distToGoal < this.lastDistToGoal) {
             // Play the "warmer" sound byte
-            //sounds[soundInfo["warmer"]].play();
             soundHandler.playSound(soundHandler.soundInfo[audioFiles.warmer.name]);
+            // Log to console that warmer sound was played
+            console.log("Warmer sound played");
+
         } else if (distToGoal > this.lastDistToGoal) {
             // Play the "colder" sound byte
-            //sounds[soundInfo["colder"]].play();
             soundHandler.playSound(soundHandler.soundInfo[audioFiles.colder.name]);
+            // Log to console that colder sound was played
+            console.log("Colder sound played");
         }
 
 
@@ -112,6 +133,9 @@ newLevel.prototype = {
         if (endType == 0) {
             // Set the level over flag for the level as a whole
             this.levelComplete = 2;
+
+            // Debug print about how you failed
+            console.log("You ran out of time... Oops");
 
             // TODO: hook to sound call for failure sound clip
         } else if (endType == 1) {

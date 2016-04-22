@@ -89,6 +89,10 @@ gameState.prototype = {
         } else if (this.currentLevel.levelComplete == 2) {
             // This is what to do if the game has been lost
 
+
+            // Break out of the update function
+            return;
+
         }
 
 

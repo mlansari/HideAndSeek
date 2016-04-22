@@ -19,8 +19,8 @@ mapProperties = {
     tHeight: 32,
 
     // Base 0 level difficulty width and height of map  TODO: refine these values
-    baseWidth: 24,
-    baseHeight: 18,
+    baseWidth: 12,
+    baseHeight: 9,
 
     // Important map property constants
     MIN_OBSTACLE_DIFF: 6,

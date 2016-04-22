@@ -45,7 +45,7 @@ loadSprites = function() {
 };
 
 loadAudio = function() {
-    // Iterate through all of the audio in the audioFiles object
+    // Iterate through all of the audio in the audioFiles object (this doesn't work, whyyyyyyy?)
     for (var soundProp in audioFiles) {
         if (audioFiles.hasOwnProperty(soundProp)) {
             console.log("Loading: " + soundProp.name);
