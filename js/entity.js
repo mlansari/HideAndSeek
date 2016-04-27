@@ -17,6 +17,7 @@ entityTypes = {
     nonLethalObstacle: {index:1, },
     lethalObstacles: {index:2, },
     goal: {index:3, },
+    obstacle: {index:4, },
 };
 
 

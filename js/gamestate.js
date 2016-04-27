@@ -117,7 +117,7 @@ gameState.prototype = {
 
     nextLevel: function() {
         // This is a utility used to cover up and handle the regeneration of the level with an incremented difficulty
-        // TODO: Also play a sound to indicate a new level
+        // TODO: Also play a sound to indicate a new level (maybe just the end of last level indication is good enough?)
 
         this.difficulty++;
         this.initLevel();

@@ -73,7 +73,7 @@ newLevel.prototype = {
         }
 
         // TODO: debug print the amount of time remaining
-        console.log(this.levelEndTime - game.time.now);
+        //console.log(this.levelEndTime - game.time.now);
 
         // Check whether or not the time has run out
         if (game.time.now > this.levelEndTime) {

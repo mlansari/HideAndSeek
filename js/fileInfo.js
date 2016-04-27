@@ -19,6 +19,7 @@ spriteFiles = {
     floor: {URL:'assets/TempFloor.png', name:'floor'},
     player: {URL:'assets/TempPlayer.png', name:'player'},
     goal: {URL:'assets/TempGoal.png', name:'goal'},
+    obstacle: {URL:'assets/TempObstacle.png', name:'obstacle'},
 
     // Permanent Sprites
 
@@ -39,6 +40,7 @@ loadSprites = function() {
     game.load.image(spriteFiles.floor.name, spriteFiles.floor.URL);
     game.load.image(spriteFiles.player.name, spriteFiles.player.URL);
     game.load.image(spriteFiles.goal.name, spriteFiles.goal.URL);
+    game.load.image(spriteFiles.obstacle.name, spriteFiles.obstacle.URL);
 
     // Permanent sprite loads
 
