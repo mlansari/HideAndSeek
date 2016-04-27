@@ -12,7 +12,7 @@ var levelConstants;
 
 // *** Initializations ***
 levelConstants = {
-    BASE_LEVEL_LIFE: 120 * 1000,     // SECONDS * MILLISECOND multiplier
+    BASE_LEVEL_LIFE: 15 * 1000,     // SECONDS * MILLISECOND multiplier
 };
 
 newLevel = function() {
@@ -33,6 +33,9 @@ newLevel = function() {
     // The last distance between the player and the goal
     this.lastDistToGoal;
 
+    // Time remaining indicator on screen
+    this.timeWriting;
+
 };
 
 newLevel.prototype = {
@@ -47,7 +50,7 @@ newLevel.prototype = {
         this.levelMap.generate(this.difficulty);
 
         // Generate a max time for the level, based on the difficult level
-        this.levelEndTime = game.time.now + (levelConstants.BASE_LEVEL_LIFE - diffLevel * 1000);
+        this.levelEndTime = game.time.now + (levelConstants.BASE_LEVEL_LIFE + (diffLevel * 5000));
 
 
         // Create a player for the game
@@ -60,6 +63,10 @@ newLevel.prototype = {
         // Save the initial distance between the player and the goal
         this.lastDistToGoal = calcDistance(this.levelMap.goal.x, this.levelMap.goal.y, this.levelPlayer.x,
                                             this.levelPlayer.y);
+
+        // Initialize the time writing
+        this.timeWriting = game.add.text(gameProperties.screenWidth - 100, 10, (this.levelEndTime - game.time.now),
+            fontInfo.fontStyle);
     },
 
     // This is what is called each gameLoop iteration,in order to update the game
@@ -73,7 +80,7 @@ newLevel.prototype = {
             return;
         }
 
-        // TODO: debug print the amount of time remaining
+        // debug print the amount of time remaining
         //console.log(this.levelEndTime - game.time.now);
 
         // Check whether or not the time has run out
@@ -85,6 +92,9 @@ newLevel.prototype = {
             this.levelEnd(0);
             return;
         }
+
+        // Update time on screen
+        this.timeWriting.text = (this.levelEndTime - game.time.now);
 
         // Check collisions with the player
         var distToGoal = calcDistance(this.levelMap.goal.x, this.levelMap.goal.y, this.levelPlayer.x, this.levelPlayer.y);
@@ -130,6 +140,9 @@ newLevel.prototype = {
     // 0: failure, time ran out
     // 1: success, player reached goal, move on to next level
     levelEnd: function(endType) {
+        // Stop the time writing
+        this.timeWriting.text = "";
+
         // Check how the level ended
         if (endType == 0) {
             // Set the level over flag for the level as a whole
@@ -138,20 +151,13 @@ newLevel.prototype = {
             // Debug print about how you failed
             console.log("You ran out of time... Oops");
 
-            // TODO: hook to sound call for failure sound clip
+            // Play the level failure sound
+            soundHandler.playSound(soundHandler.soundInfo[audioFiles.end.name]);
+
         } else if (endType == 1) {
             // Set the level over flag for the level as whole
             this.levelComplete = 1;
-
-            // TODO: hook to sound call for success clip
         }
-    },
-
-    checkMapCollision: function(x, y) {
-        if (this.levelMap.mapGrid[x][y] == entityTypes.empty.index || this.levelMap.mapGrid[x][y] == entityTypes.goal.index) {
-            return false;
-        }
-        return true;
     },
 
 };

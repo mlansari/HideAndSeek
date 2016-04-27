@@ -33,7 +33,6 @@ Player.prototype = {
     /*
      * Movement functions (up, down, left, right)
      *
-     * TODO: implement wall checking, as well as less than zero indexing
      */
     moveUp: function() {
         // Change the Player's y position

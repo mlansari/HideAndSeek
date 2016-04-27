@@ -8,6 +8,7 @@
 // *** Declarations ***
 var spriteFiles;
 var audioFiles;
+var fontInfo;
 var loadSprites;        // Function used to load all of the sprites in the objects used to store their properties
 var loadAudio;          // Function loads all of the sound files in the audioFiles object into the soundHandler
 
@@ -31,9 +32,14 @@ audioFiles = {
     warmer:         {urls:['assets/snd/TempWinSound.wav'], name:'warmer', layer: 1},
     colder:         {urls:['assets/snd/TempLoseSound.wav'], name:'colder',  layer: 1},
     wall:           {urls:['assets/snd/TempWallHit.wav', 'assets/snd/TempWallHit.mp3'], name:'wall', layer: 1},
+    end:            {urls:['assets/snd/TempEndSound.wav'], name:'end', layer: 1},
 
     // Permanent audio
 
+};
+
+fontInfo = {
+    fontStyle:{font: '20px Arial', fill: '#FFFFFF', align: 'center'},
 };
 
 loadSprites = function() {
@@ -60,6 +66,7 @@ loadAudio = function() {
     soundHandler.addSound(audioFiles.warmer);
     soundHandler.addSound(audioFiles.colder);
     soundHandler.addSound(audioFiles.wall);
+    soundHandler.addSound(audioFiles.end);
 };
 
 // Sound handler

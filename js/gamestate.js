@@ -24,6 +24,9 @@ gameState = function(game) {
 
     // Holds the current difficulty level, which starts at zero and is incremented upwards
     this.difficulty = 0;
+
+    // Store leftover time amounts from between levels
+    this.accruedTime = 0;
 };
 
 gameState.prototype = {
@@ -81,14 +84,12 @@ gameState.prototype = {
         // Check for level states
         if (this.currentLevel.levelComplete == 1) {
             // Start the next level
-            //game.time.events.add(gameProperties.PAUSE_BEFORE_NEW_LEVEL, this.nextLevel, this);
             this.nextLevel();
 
-            // TODO: Do something to stop the game from continuing to play and reschedule this event
-
         } else if (this.currentLevel.levelComplete == 2) {
-            // TODO: getting something here is important!!  This is what to do if the game has been lost
-
+            // Game is over here
+            // Print out player's performance
+            console.log("Player's final score!:  " + (this.difficulty * this.accruedTime));
 
             // Break out of the update function
             return;
@@ -117,9 +118,9 @@ gameState.prototype = {
 
     nextLevel: function() {
         // This is a utility used to cover up and handle the regeneration of the level with an incremented difficulty
-        // TODO: Also play a sound to indicate a new level (maybe just the end of last level indication is good enough?)
 
         this.difficulty++;
+        this.accruedTime += (this.currentLevel.levelEndTime - game.time.now);
         this.initLevel();
     },
 

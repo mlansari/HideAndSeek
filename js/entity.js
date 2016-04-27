@@ -14,8 +14,8 @@ var entityTypes;
 // This defines each type of entity's necessary outside metadata, index, etc.
 entityTypes = {
     empty: {index:0, },
-    nonLethalObstacle: {index:1, },
-    lethalObstacles: {index:2, },
+    //nonLethalObstacle: {index:1, },
+    //lethalObstacles: {index:2, },
     goal: {index:3, },
     obstacle: {index:4, },
 };

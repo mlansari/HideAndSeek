@@ -14,11 +14,11 @@ var gameMap;
 // *** Initializations ***
 // Set up the map properties
 mapProperties = {
-    // Tile dimensions TODO: Load from file
+    // Tile dimensions
     tWidth: 32,
     tHeight: 32,
 
-    // Base 0 level difficulty width and height of map  TODO: refine these values
+    // Base 0 level difficulty width and height of map
     baseWidth: 12,
     baseHeight: 9,
 
@@ -62,29 +62,33 @@ gameMap.prototype = {
         this.width = mapProperties.baseWidth + (2 * diffLevel);
         this.height = mapProperties.baseHeight + (2 * diffLevel);
 
-        // Print the width and the height  TODO: this is debug
-        console.log("Width: " + this.width + ", Height: " + this.height);
+        // Print the width and the height
+        //console.log("Width: " + this.width + ", Height: " + this.height);
 
         // Create the mapGrid
         this.mapGrid = new Array(this.height);
         for (var i = 0; i < this.mapGrid.length; i++) {
-            // TODO: debug
-            console.log("Generating mapGrid row " + i + " of width " + this.width);
+            // debug
+            //console.log("Generating mapGrid row " + i + " of width " + this.width);
             this.mapGrid[i] = this.genRow(genObstacles, this.width, diffLevel);
         }
 
         // This is all of the operations that only need to be done if the map is being generated with obstacles
         if (genObstacles) {
             // Create the groups which are going to contain the obstacles on the map, of both types
-            // TODO: Update, as of now, only implement nonlethal obstacles
+            // Update: as of now, only implement nonlethal obstacles
+
+
             this.lethalObstacles = [];
             this.nonLethalObstacles = [];
+
+
 
             //this.genLethalObstacles();
             this.genNonLethalObstacles(diffLevel);
         }
 
-        // Build a tilemap from the mapGrid      TODO: switch to permanent render scheme
+        // Build a tilemap from the mapGrid
         //this.tempRenderSet();
 
         // Semi-randomly generate the position of the goal on the map
@@ -101,14 +105,14 @@ gameMap.prototype = {
         // Set the goal in the mapGrid
         this.mapGrid[row][column] = entityTypes.goal.index;
 
-        // TODO: debug print the map grid
-        for (var i = 0; i < this.height; i++) {
-            var temp  = "";
-            for (var j = 0; j < this.width; j++) {
-                temp += "" + this.mapGrid[i][j] + " ";
-            }
-            console.log(temp);
-        }
+        // debug print the map grid
+        //for (var i = 0; i < this.height; i++) {
+        //    var temp  = "";
+        //    for (var j = 0; j < this.width; j++) {
+        //        temp += "" + this.mapGrid[i][j] + " ";
+        //    }
+        //    console.log(temp);
+        //}
 
 
         // Set up for render
@@ -123,7 +127,6 @@ gameMap.prototype = {
         //    row.fill(entityTypes.empty.index);
         //    return row;
         //} else {
-        //    // TODO: implement generation of row with random obstacles included
         //    var row
         //}
 
@@ -142,7 +145,7 @@ gameMap.prototype = {
         var obsGened = 0;
         while (obsGened < obstacles) {
             // Generate a random possible width and height for the obstacle
-            var w = game.rnd.between(1, 2 + (0));      // TODO: implement increased size possibilities with diff ++
+            var w = game.rnd.between(1, 2 + (0));
             var h = game.rnd.between(1, 2 + (0));
 
             // Create containers for the x and y to use
@@ -163,31 +166,31 @@ gameMap.prototype = {
                 done = true;
 
                 // Check that x and y through the w and h are sane (eg: empty and not out of bounds)
-                console.log("Width and height of the mapGrid: " + this.mapGrid.length + ", " + this.mapGrid[0].length);
+                //console.log("Width and height of the mapGrid: " + this.mapGrid.length + ", " + this.mapGrid[0].length);
                 for (var i = 0; i < w; i++) {
                     for (var j = 0; j < h; j++) {
-                        console.log("Checking (" + (x + i) + ", " + (y + j) + ")");
+                        //console.log("Checking (" + (x + i) + ", " + (y + j) + ")");
                         //console.log("It is " + this.mapGrid[x + i]);
 
                         if ((x + i) >= this.width || (y + j) >= this.height) {
                             done = false;
                         } else if (this.mapGrid[x + i][y + j] != entityTypes.empty.index) {
-                            console.log("Not empty");
+                            //console.log("Not empty");
                             done = false;
                         }
                     }
                 }
             }
 
-            console.log("Generating at " + x + ", " + y + " with a width and height of " + w + " and " + h);
+            //console.log("Generating at " + x + ", " + y + " with a width and height of " + w + " and " + h);
 
             // Check for staying below max obstacle tile amount
             if (obsGened + (w * h) > obstacles) {
                 continue;
             }
 
-            // TODO: debug print
-            console.log(obsGened + " out of " + obstacles);
+            //  debug print
+            //console.log(obsGened + " out of " + obstacles);
 
             // Set them up as obstacles, because it's now safe to do so
             for (var i = 0; i < w; i++) {
