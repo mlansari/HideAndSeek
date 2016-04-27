@@ -87,7 +87,7 @@ gameState.prototype = {
             // TODO: Do something to stop the game from continuing to play and reschedule this event
 
         } else if (this.currentLevel.levelComplete == 2) {
-            // This is what to do if the game has been lost
+            // TODO: getting something here is important!!  This is what to do if the game has been lost
 
 
             // Break out of the update function

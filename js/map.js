@@ -137,7 +137,7 @@ gameMap.prototype = {
         // Choose an amount of nonlethal obstacles to generate based on the difficulty level
         // Or perhaps calculate as a percentage of the map area off of base value
         var obstacles = Math.floor((this.width * this.height) *
-            (mapProperties.MIN_NONLETHAL_OBSTACLE_AMOUNT));
+            ((mapProperties.MIN_NONLETHAL_OBSTACLE_AMOUNT) + (diffLevel *.01)));
 
         var obsGened = 0;
         while (obsGened < obstacles) {
@@ -211,6 +211,8 @@ gameMap.prototype = {
             for (var j = 0; j < this.mapGrid[i].length; j++) {
                 if (this.mapGrid[i][j] == entityTypes.empty.index) {
                     this.renderMap[i][j] = game.add.sprite(j * mapProperties.tWidth, i * mapProperties.tHeight, spriteFiles.floor.name);
+                } else if (this.mapGrid[i][j] == entityTypes.goal.index) {
+                    // Do nothing, rendering that is handled separately
                 } else {
                     this.renderMap[i][j] = game.add.sprite(j * mapProperties.tWidth, i * mapProperties.tHeight, spriteFiles.obstacle.name);
                 }
@@ -223,7 +225,11 @@ gameMap.prototype = {
 
     // This is a utility function used to check for entities on a tile
     checkCollision: function(x, y) {
-
+        // Check if the tile is not equal to empty
+        if (this.mapGrid[x][y] == entityTypes.empty.index || this.mapGrid[x][y] == entityTypes.goal.index) {
+            return false;
+        }
+        return true;
     },
 
 };

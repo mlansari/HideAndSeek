@@ -27,9 +27,10 @@ spriteFiles = {
 
 audioFiles = {
     // Temporary audio
-    goalAcquired: {urls:['assets/snd/TempGoalGot.wav'], name:'goalAcquired', layer: 1},
-    warmer: {urls:['assets/snd/TempWinSound.wav'], name:'warmer', layer: 1},
-    colder: {urls:['assets/snd/TempLoseSound.wav'], name:'colder',  layer: 1},
+    goalAcquired:   {urls:['assets/snd/TempGoalGot.wav'], name:'goalAcquired', layer: 1},
+    warmer:         {urls:['assets/snd/TempWinSound.wav'], name:'warmer', layer: 1},
+    colder:         {urls:['assets/snd/TempLoseSound.wav'], name:'colder',  layer: 1},
+    wall:           {urls:['assets/snd/TempWallHit.wav', 'assets/snd/TempWallHit.mp3'], name:'wall', layer: 1},
 
     // Permanent audio
 
@@ -58,6 +59,7 @@ loadAudio = function() {
     soundHandler.addSound(audioFiles.goalAcquired);
     soundHandler.addSound(audioFiles.warmer);
     soundHandler.addSound(audioFiles.colder);
+    soundHandler.addSound(audioFiles.wall);
 };
 
 // Sound handler

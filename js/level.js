@@ -54,7 +54,8 @@ newLevel.prototype = {
         // Randomly choose from the bottom three rows to generate in
         var row = game.rnd.between(this.levelMap.height - 3, this.levelMap.height - 1);
         var column = game.rnd.between(0, this.levelMap.width - 1);
-        this.levelPlayer = new Player(column, row, this.levelMap.width, this.levelMap.height);
+        this.levelPlayer = new Player(column, row, this.levelMap.width, this.levelMap.height,
+            this.levelMap);
 
         // Save the initial distance between the player and the goal
         this.lastDistToGoal = calcDistance(this.levelMap.goal.x, this.levelMap.goal.y, this.levelPlayer.x,
@@ -144,6 +145,13 @@ newLevel.prototype = {
 
             // TODO: hook to sound call for success clip
         }
+    },
+
+    checkMapCollision: function(x, y) {
+        if (this.levelMap.mapGrid[x][y] == entityTypes.empty.index || this.levelMap.mapGrid[x][y] == entityTypes.goal.index) {
+            return false;
+        }
+        return true;
     },
 
 };

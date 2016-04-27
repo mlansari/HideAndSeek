@@ -9,7 +9,7 @@
 var Player;
 
 // *** Initializations ***
-Player = function(startx, starty, xmapdim, ymapdim) {
+Player = function(startx, starty, xmapdim, ymapdim, theMap) {
     // Setup the initial position of the Player
     this.x = startx;
     this.y = starty;
@@ -21,6 +21,9 @@ Player = function(startx, starty, xmapdim, ymapdim) {
     // The Player sprite
     this.playerSprite = game.add.sprite(this.x * mapProperties.tWidth, this.y * mapProperties.tHeight,
         spriteFiles.player.name);
+
+    // Save the collision detection function
+    this.map = theMap;
 
 };
 
@@ -34,7 +37,7 @@ Player.prototype = {
      */
     moveUp: function() {
         // Change the Player's y position
-        if (this.y - 1 >= 0) {          // TODO: check that next position is clear as well, prior to allowing movement
+        if (this.y - 1 >= 0 && !this.wallCheck(this.x, this.y - 1)) {
             this.y -= 1;
             this.playerSprite.y -= mapProperties.tHeight;
         } else {
@@ -44,7 +47,7 @@ Player.prototype = {
     },
 
     moveDown: function() {
-        if (this.y + 1 < this.ywall) {
+        if (this.y + 1 < this.ywall && !this.wallCheck(this.x, this.y + 1)) {
             this.y += 1;
             this.playerSprite.y += mapProperties.tHeight;
         } else {
@@ -54,7 +57,7 @@ Player.prototype = {
     },
 
     moveLeft: function() {
-        if (this.x - 1 >= 0) {
+        if (this.x - 1 >= 0 && !this.wallCheck(this.x - 1, this.y)) {
             this.x -= 1;
             this.playerSprite.x -= mapProperties.tWidth;
         } else {
@@ -64,7 +67,7 @@ Player.prototype = {
     },
 
     moveRight: function() {
-        if (this.x + 1 < this.xwall) {
+        if (this.x + 1 < this.xwall && !this.wallCheck(this.x + 1, this.y)) {
             this.x += 1;
             this.playerSprite.x += mapProperties.tWidth;
         } else {
@@ -76,12 +79,23 @@ Player.prototype = {
     // Function for what to do when blocking obstacle is hit
     // Directions are 0:up, 1:left, 2:down, 3:right
     obstacleBlock: function(direction) {
-        // TODO: play a sound, with sound position depending on the direction of the encounter
+        // Play a wall hit sound
+        soundHandler.playSound(soundHandler.soundInfo[audioFiles.wall.name]);
     },
 
 
     // A generic update function, used to perform any necessary per-cycle scheduling
     update: function() {
 
+    },
+
+    // Check the collision
+    wallCheck: function(x, y) {
+        // Print out what the map is
+        console.log(this.map.mapGrid);
+        if (this.map.mapGrid[y][x] == entityTypes.empty.index || this.map.mapGrid[y][x] == entityTypes.goal.index) {
+            return false;
+        }
+        return true;
     },
 };
