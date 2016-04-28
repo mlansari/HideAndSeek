@@ -12,7 +12,7 @@ var levelConstants;
 
 // *** Initializations ***
 levelConstants = {
-    BASE_LEVEL_LIFE: 15 * 1000,     // SECONDS * MILLISECOND multiplier
+    BASE_LEVEL_LIFE: 30 * 1000,     // SECONDS * MILLISECOND multiplier
 };
 
 newLevel = function() {
@@ -21,6 +21,7 @@ newLevel = function() {
 
     // This stores the difficulty level of this map
     this.difficulty;
+    this.levelText;
 
     // The level's map and player
     this.levelMap;
@@ -50,7 +51,7 @@ newLevel.prototype = {
         this.levelMap.generate(this.difficulty);
 
         // Generate a max time for the level, based on the difficult level
-        this.levelEndTime = game.time.now + (levelConstants.BASE_LEVEL_LIFE + (diffLevel * 5000));
+        this.levelEndTime = game.time.now + (levelConstants.BASE_LEVEL_LIFE + (diffLevel * 6000));
 
 
         // Create a player for the game
@@ -58,7 +59,7 @@ newLevel.prototype = {
         console.log("got here");
 
         var row, column;
-        var done = false;
+        //var done = false;
         //while (!done) {
         //    row = game.rnd.between(this.levelMap.height - 3, this.levelMap.height - 1);
         //    column = game.rnd.between(0, this.levelMap.width - 1);
@@ -86,6 +87,7 @@ newLevel.prototype = {
         // Initialize the time writing
         this.timeWriting = game.add.text(gameProperties.screenWidth - 100, 10, (this.levelEndTime - game.time.now),
             fontInfo.fontStyle);
+        this.levelText = game.add.text(20, 10, "Level " + (this.difficulty + 1), fontInfo.fontStyle);
     },
 
     // This is what is called each gameLoop iteration,in order to update the game
@@ -161,6 +163,7 @@ newLevel.prototype = {
     levelEnd: function(endType) {
         // Stop the time writing
         this.timeWriting.text = "";
+        this.levelText.text = "";
 
         // Check how the level ended
         if (endType == 0) {
