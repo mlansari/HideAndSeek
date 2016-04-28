@@ -27,6 +27,7 @@ gameState = function(game) {
 
     // Store leftover time amounts from between levels
     this.accruedTime = 0;
+    this.scoreMessage;
 };
 
 gameState.prototype = {
@@ -90,6 +91,10 @@ gameState.prototype = {
             // Game is over here
             // Print out player's performance
             console.log("Player's final score!:  " + (this.difficulty * this.accruedTime));
+
+            // Place it on the screen
+            this.scoreMessage = game.add.text((gameProperties.screenWidth / 2) - 50, (gameProperties.screenHeight / 2 - 50),
+                "Your score: " + (this.difficulty * this.accruedTime), fontInfo.fontStyle);
 
             // Break out of the update function
             return;

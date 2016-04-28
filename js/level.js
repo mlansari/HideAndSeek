@@ -55,8 +55,27 @@ newLevel.prototype = {
 
         // Create a player for the game
         // Randomly choose from the bottom three rows to generate in
-        var row = game.rnd.between(this.levelMap.height - 3, this.levelMap.height - 1);
-        var column = game.rnd.between(0, this.levelMap.width - 1);
+        console.log("got here");
+
+        var row, column;
+        var done = false;
+        //while (!done) {
+        //    row = game.rnd.between(this.levelMap.height - 3, this.levelMap.height - 1);
+        //    column = game.rnd.between(0, this.levelMap.width - 1);
+        //
+        //    // debug print
+        //    console.log("Distance: " + calcDistance(column, row, this.levelMap.x, this.levelMap.y));
+        //    console.log("Limit: " + (this.levelMap.height + (this.levelMap.width / 3)));
+        //
+        //    if (calcDistance(column, row, this.levelMap.goal.x, this.levelMap.goal.y) > (this.levelMap.height + (this.levelMap.width / 3))) {
+        //        done = true;
+        //    }
+        //}
+
+        row = game.rnd.between(this.levelMap.height - 3, this.levelMap.height - 1);
+        //column = game.rnd.between(0, this.levelMap.width - 1);
+        column = this.levelMap.width - this.levelMap.goal.x - 1;
+
         this.levelPlayer = new Player(column, row, this.levelMap.width, this.levelMap.height,
             this.levelMap);
 
