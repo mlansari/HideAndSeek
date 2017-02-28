@@ -91,7 +91,7 @@ Player.prototype = {
     // Check the collision
     wallCheck: function(x, y) {
         // Print out what the map is
-        console.log(this.map.mapGrid);
+        // console.log(this.map.mapGrid);
         if (this.map.mapGrid[y][x] == entityTypes.empty.index || this.map.mapGrid[y][x] == entityTypes.goal.index) {
             return false;
         }

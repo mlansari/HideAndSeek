@@ -56,7 +56,7 @@ newLevel.prototype = {
 
         // Create a player for the game
         // Randomly choose from the bottom three rows to generate in
-        console.log("got here");
+        // console.log("got here");
 
         var row, column;
         //var done = false;
@@ -95,7 +95,7 @@ newLevel.prototype = {
         // Check whether or not level is already over and we're already waiting for cleanup
         if (this.levelComplete > 0) {
             // Debug print
-            console.log("This level is over");
+            // console.log("This level is over");
 
             // If it is, exit the loop
             return;
@@ -108,7 +108,7 @@ newLevel.prototype = {
         if (game.time.now > this.levelEndTime) {
 
             // Debug print
-            console.log("You ran out of time!");
+            // console.log("You ran out of time!");
 
             this.levelEnd(0);
             return;
@@ -139,13 +139,13 @@ newLevel.prototype = {
             // Play the "warmer" sound byte
             soundHandler.playSound(soundHandler.soundInfo[audioFiles.warmer.name]);
             // Log to console that warmer sound was played
-            console.log("Warmer sound played");
+            // console.log("Warmer sound played");
 
         } else if (distToGoal > this.lastDistToGoal) {
             // Play the "colder" sound byte
             soundHandler.playSound(soundHandler.soundInfo[audioFiles.colder.name]);
             // Log to console that colder sound was played
-            console.log("Colder sound played");
+            // console.log("Colder sound played");
         }
 
 
@@ -171,7 +171,7 @@ newLevel.prototype = {
             this.levelComplete = 2;
 
             // Debug print about how you failed
-            console.log("You ran out of time... Oops");
+            // console.log("You ran out of time... Oops");
 
             // Play the level failure sound
             soundHandler.playSound(soundHandler.soundInfo[audioFiles.end.name]);

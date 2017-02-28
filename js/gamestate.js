@@ -52,7 +52,7 @@ gameState.prototype = {
         // object generation
 
         // Temporary debug output TODO: remove/comment when no longer necessary
-        console.log("Game State created");
+        // console.log("Game State created");
 
         // Do all of the game information initialization
         this.initKeyboard();
@@ -90,7 +90,7 @@ gameState.prototype = {
         } else if (this.currentLevel.levelComplete == 2) {
             // Game is over here
             // Print out player's performance
-            console.log("Player's final score!:  " + (this.difficulty * this.accruedTime));
+            // console.log("Player's final score!:  " + (this.difficulty * this.accruedTime));
 
             // Place it on the screen
             this.scoreMessage = game.add.text((gameProperties.screenWidth / 2) - 50, (gameProperties.screenHeight / 2 - 50),
@@ -134,7 +134,7 @@ gameState.prototype = {
      */
     upPressed: function() {
         // Debug line to indicate button pressed, uncomment when needed
-        console.log("Up pressed");
+        // console.log("Up pressed");
 
         // Check if there has been enough time since previous movement
         if (game.time.now > this.nextMovement) {
@@ -147,7 +147,7 @@ gameState.prototype = {
 
     downPressed: function() {
         // Debug line to indicate button pressed, uncomment when needed
-        console.log("Down pressed");
+        // console.log("Down pressed");
 
         // Check if there has been enough time since previous movement
         if (game.time.now > this.nextMovement) {
@@ -160,7 +160,7 @@ gameState.prototype = {
 
     leftPressed: function() {
         // Debug line to indicate button pressed, uncomment when needed
-        console.log("Left pressed");
+        // console.log("Left pressed");
 
         // Check if there has been enough time since previous movement
         if (game.time.now > this.nextMovement) {
@@ -173,7 +173,7 @@ gameState.prototype = {
 
     rightPressed: function() {
         // Debug line to indicate button pressed, uncomment when needed
-        console.log("Right pressed");
+        // console.log("Right pressed");
 
         // Check if there has been enough time since previous movement
         if (game.time.now > this.nextMovement) {

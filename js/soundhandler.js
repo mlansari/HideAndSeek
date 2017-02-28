@@ -58,7 +58,7 @@ SoundHandler.prototype = {
     },
 
     playSound: function(id) {
-        console.log(id + " is being played.");
+        // console.log(id + " is being played.");
 
         if (this.fgdSounds.indexOf(id) > -1) {
             //console.log("Foreground playing: " + this.foreground);
